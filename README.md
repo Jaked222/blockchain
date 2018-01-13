@@ -15,4 +15,5 @@ or
 This simple blockchain implementation was made with these video tutorials:
 
 [Simple blockchain in Javascript (Part 1)](https://www.youtube.com/watch?v=zVqczFZr124)
+
 [Proof of work (Part 2)](https://www.youtube.com/watch?v=HneatE69814&t=228s)
