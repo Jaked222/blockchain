@@ -4,7 +4,7 @@
 
 // A security issue would be someone changing a block, and then calculating the
 // hash for all the blocks after that, and you will end up with a valid chain, even
-// though it was tampered with. We also dont want out blockchain to be spammed.
+// though it was tampered with. We also dont want our blockchain to be spammed.
 // This is where proof-of-work comes in. You have to prove that you put in a lot of
 // computing power to create a block, or 'mining'. 
 
@@ -44,12 +44,8 @@ class Block {
 
 class Blockchain {
 	constructor() {
-		this.chain = [this.createGenesisBlock()];
-		this.difficulty = 3;
-	}
-
-	createGenesisBlock() {
-		return new Block(0, "01/01/2018", "Genesis Block", "0");
+		this.chain = [new Block(0, "01/01/2018", "Genesis Block", "0")];
+		this.difficulty = 4;
 	}
 
 	getLatestBlock() {
