@@ -53,18 +53,17 @@ class Blockchain {
 				console.error('Current hash not equal to previous hash');
 				return false;
 			}
-
-
-			return true;
 		}
+
+	return true;
 	}
+
 }
 
 let jakeCoin = new Blockchain();
 jakeCoin.addBLock(new Block(1, "01/10/2018", "amount 4"));
 jakeCoin.addBLock(new Block(2, "01/11/2018", "amount 10"));
 
-console.log(JSON.stringify(jakeCoin, null, 4));
 console.log('is chain valid?', jakeCoin.isChainValid());
 
 // Doing this without the line below will simply break the block
@@ -72,5 +71,6 @@ jakeCoin.chain[1].data = "amount 10000";
 // Breaks the relationship with another block in the chain. Blockchain is made to
 // add blocks to it, but never to delete a block or change it.
 jakeCoin.chain[1].hash = jakeCoin.chain[1].calculateHash();
+
 console.log(JSON.stringify(jakeCoin, null, 4));
 console.log('is chain valid?', jakeCoin.isChainValid());
