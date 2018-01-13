@@ -1,7 +1,6 @@
 // If we detect that a new block broke the chain or something is wrong with it, 
 // there is a way to rollback changes or put the block back into a correct state,
-// but that is beyond the scope of this project. This also lacks features such as proof
-// of work, peer-to-peer network, and doesn't check funds for coin etc.
+// but that is beyond the scope of this project.
 
 // A security issue would be someone changing a block, and then calculating the
 // hash for all the blocks after that, and you will end up with a valid chain, even
