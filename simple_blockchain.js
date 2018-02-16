@@ -68,9 +68,17 @@ console.log('is chain valid?', jakeCoin.isChainValid());
 
 // Doing this without the line below will simply break the block
 jakeCoin.chain[1].data = "amount 10000";
+console.log('is chain valid?', jakeCoin.isChainValid());
 // Breaks the relationship with another block in the chain. Blockchain is made to
 // add blocks to it, but never to delete a block or change it.
 jakeCoin.chain[1].hash = jakeCoin.chain[1].calculateHash();
+
+console.log(JSON.stringify(jakeCoin, null, 4));
+console.log('is chain valid?', jakeCoin.isChainValid());
+
+// Now what if I recalculate the next block also? How can we prevent this issue?
+jakeCoin.chain[2].previousHash = jakeCoin.chain[1].calculateHash();
+jakeCoin.chain[2].hash = jakeCoin.chain[2].calculateHash();
 
 console.log(JSON.stringify(jakeCoin, null, 4));
 console.log('is chain valid?', jakeCoin.isChainValid());
