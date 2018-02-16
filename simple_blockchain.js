@@ -50,7 +50,7 @@ class Blockchain {
 
 
 			if (currentBlock.previousHash !== previousBlock.hash) {
-				console.error('Current hash not equal to previous hash');
+				console.error('Currentblock previousHash not equal to previous hash');
 				return false;
 			}
 		}
