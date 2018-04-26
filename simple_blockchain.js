@@ -66,19 +66,20 @@ jakeCoin.addBLock(new Block(2, "01/11/2018", "amount 10"));
 
 console.log('is chain valid?', jakeCoin.isChainValid());
 
-// Doing this without the line below will simply break the block
-jakeCoin.chain[1].data = "amount 10000";
-console.log('is chain valid?', jakeCoin.isChainValid());
-// Breaks the relationship with another block in the chain. Blockchain is made to
-// add blocks to it, but never to delete a block or change it.
-jakeCoin.chain[1].hash = jakeCoin.chain[1].calculateHash();
+// // Doing this without the line below will simply break the block
+// jakeCoin.chain[1].data = "amount 10000";
+// console.log('Changed block data. Is chain valid?', jakeCoin.isChainValid());
 
-console.log(JSON.stringify(jakeCoin, null, 4));
-console.log('is chain valid?', jakeCoin.isChainValid());
+// // Breaks the relationship with another block in the chain. Blockchain is made to
+// // add blocks to it, but never to delete a block or change it.
+// jakeCoin.chain[1].hash = jakeCoin.chain[1].calculateHash();
+// //console.log(JSON.stringify(jakeCoin, null, 4));
+// console.log('Recalculated chain[1] block hash. Is chain valid?', jakeCoin.isChainValid());
 
-// Now what if I recalculate the next block also? How can we prevent this issue?
-jakeCoin.chain[2].previousHash = jakeCoin.chain[1].calculateHash();
-jakeCoin.chain[2].hash = jakeCoin.chain[2].calculateHash();
+// // Now what if I recalculate the next block also? How can we prevent this issue?
+// jakeCoin.chain[2].previousHash = jakeCoin.chain[1].calculateHash();
+// //console.log('Recalculated previousHash of chain[2]. Is chain valid?', jakeCoin.isChainValid());
 
-console.log(JSON.stringify(jakeCoin, null, 4));
-console.log('is chain valid?', jakeCoin.isChainValid());
+// jakeCoin.chain[2].hash = jakeCoin.chain[2].calculateHash();
+// //console.log(JSON.stringify(jakeCoin, null, 4));
+// console.log('Recalculated hash of chain[2]. Is chain valid?', jakeCoin.isChainValid());
