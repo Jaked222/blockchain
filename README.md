@@ -6,6 +6,10 @@ Clone or download this repo, make sure you have nodejs and npm installed.
 
 Open a command line in the repo's directory and type the command:
 
+npm install
+
+then:
+
 *node proof_of_work.js*
 
 or
