@@ -86,7 +86,7 @@ class Blockchain {
 let aviChain = new Blockchain();
 
 console.log('Mining block 1...');
-aviChain.addBLock(new Block(1, "01/10/2018", "amount 4"));
+aviChain.addBLock(new Block(1, "01/10/2018", "Contract 1. Terms, conditions, etc."));
 
 console.log('Mining block 2...');
-aviChain.addBLock(new Block(2, "01/12/2018", "amount 10"));
+aviChain.addBLock(new Block(2, "01/12/2018", "Contract 2. Some other arbitrary terms."));

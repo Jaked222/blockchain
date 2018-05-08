@@ -57,9 +57,12 @@ class Blockchain {
 	}
 
 }
+console.log('\n');
+console.log('Running...');
+console.log('\n');
 
 let aviChain = new Blockchain();
-aviChain.addBLock(new Block(1, "01/10/2018", "Contract: Jake is now CEO of AVI"));
+aviChain.addBLock(new Block(1, "01/10/2018", "Contract: Jake is now owner of AVI"));
 aviChain.addBLock(new Block(2, "01/11/2018", "Contract: Someone owes Someperson 10000 aviCoins"));
 
 console.log('is chain valid?', aviChain.isChainValid());
