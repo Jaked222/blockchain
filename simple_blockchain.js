@@ -21,11 +21,7 @@ class Block {
 
 class Blockchain {
 	constructor() {
-		this.chain = [this.createGenesisBlock()];
-	}
-
-	createGenesisBlock() {
-		return new Block(0, "01/01/2018", "Genesis Block", "0");
+		this.chain = [new Block(0, "01/01/2018", "Genesis Block", "0")];
 	}
 
 	getLatestBlock() {
@@ -38,6 +34,8 @@ class Blockchain {
 		this.chain.push(newBlock);
 	}
 
+	// Note that we need access to every single block (transaction) that has been written to the chain
+	// in order to validate it.
 	isChainValid() {
 		for(var i=1; i < this.chain.length; i++) {
 			const currentBlock = this.chain[i];
@@ -60,26 +58,27 @@ class Blockchain {
 
 }
 
-let jakeCoin = new Blockchain();
-jakeCoin.addBLock(new Block(1, "01/10/2018", "amount 4"));
-jakeCoin.addBLock(new Block(2, "01/11/2018", "amount 10"));
+let aviChain = new Blockchain();
+aviChain.addBLock(new Block(1, "01/10/2018", "Contract: Jake is now CEO of AVI"));
+aviChain.addBLock(new Block(2, "01/11/2018", "Contract: Someone owes Someperson 10000 aviCoins"));
 
-console.log('is chain valid?', jakeCoin.isChainValid());
+console.log('is chain valid?', aviChain.isChainValid());
 
-// // Doing this without the line below will simply break the block
-// jakeCoin.chain[1].data = "amount 10000";
-// console.log('Changed block data. Is chain valid?', jakeCoin.isChainValid());
+// // Doing this will simply break the block
+// aviChain.chain[1].data = "amount 10000";
+// console.log('Changed block data. Is chain valid?', aviChain.isChainValid());
 
 // // Breaks the relationship with another block in the chain. Blockchain is made to
 // // add blocks to it, but never to delete a block or change it.
-// jakeCoin.chain[1].hash = jakeCoin.chain[1].calculateHash();
-// //console.log(JSON.stringify(jakeCoin, null, 4));
-// console.log('Recalculated chain[1] block hash. Is chain valid?', jakeCoin.isChainValid());
+// aviChain.chain[1].hash = aviChain.chain[1].calculateHash();
+// //console.log(JSON.stringify(aviChain, null, 4));
+// console.log('Recalculated chain[1] block hash. Is chain valid?', aviChain.isChainValid());
 
-// // Now what if I recalculate the next block also? How can we prevent this issue?
-// jakeCoin.chain[2].previousHash = jakeCoin.chain[1].calculateHash();
-// //console.log('Recalculated previousHash of chain[2]. Is chain valid?', jakeCoin.isChainValid());
+// // Now what if I recalculate the next block also?
+// aviChain.chain[2].previousHash = aviChain.chain[1].calculateHash();
+// console.log('Recalculated previousHash of chain[2]. Is chain valid?', aviChain.isChainValid());
 
-// jakeCoin.chain[2].hash = jakeCoin.chain[2].calculateHash();
-// //console.log(JSON.stringify(jakeCoin, null, 4));
-// console.log('Recalculated hash of chain[2]. Is chain valid?', jakeCoin.isChainValid());
+// How can we prevent the issue of being able to do this for every block in the chain?
+// aviChain.chain[2].hash = aviChain.chain[2].calculateHash();
+// console.log('Recalculated hash of chain[2]. Is chain valid?', aviChain.isChainValid());
+// //console.log(JSON.stringify(aviChain, null, 4));

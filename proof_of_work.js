@@ -33,6 +33,7 @@ class Block {
 	}
 
 	mineBlock(difficulty) {
+		// Fancy syntax for 'While the beginning of the hash isn't # of 0s equal to difficulty'
 		while(this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")) {
 			this.nonce++;
 			this.hash = this.calculateHash();
@@ -56,6 +57,7 @@ class Blockchain {
 	addBLock(newBlock) {
 		newBlock.previousHash = this.getLatestBlock().hash;
 		newBlock.mineBlock(this.difficulty);
+		//Before we can push the block, we need to mine!
 		this.chain.push(newBlock);
 	}
 
@@ -81,10 +83,10 @@ class Blockchain {
 }
 
 
-let jakeCoin = new Blockchain();
+let aviChain = new Blockchain();
 
 console.log('Mining block 1...');
-jakeCoin.addBLock(new Block(1, "01/10/2018", "amount 4"));
+aviChain.addBLock(new Block(1, "01/10/2018", "amount 4"));
 
 console.log('Mining block 2...');
-jakeCoin.addBLock(new Block(2, "01/12/2018", "amount 10"));
+aviChain.addBLock(new Block(2, "01/12/2018", "amount 10"));
